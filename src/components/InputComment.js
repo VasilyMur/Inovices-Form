@@ -6,7 +6,7 @@ class InputComment extends React.Component {
         return(
             <div className="invoice__form--item comment">
                 <label>Comment</label>
-                <textarea name="comment" value={this.props.currentComment ? this.props.currentComment : ''}/> 
+                <textarea name="comment" value={this.props.currentComment ? this.props.currentComment : ''} /> 
             </div>
         )
     }
