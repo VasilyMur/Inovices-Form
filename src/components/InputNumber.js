@@ -60,7 +60,7 @@ class InputNumber extends React.Component {
                     type="text" 
                     name="number" 
                     value={ this.props.currentInvoiceNumber ? this.props.currentInvoiceNumber : this.state.input }
-                    placeHolder="Start typing..."
+                    placeholder="Start typing..."
                     /> 
 
                     <ul className="results">

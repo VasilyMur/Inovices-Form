@@ -62,7 +62,7 @@ clearInputField = () => {
                     <input onChange={this.searchDate} 
                                 type="text" name="supply-date" 
                                 value={this.props.currentInvoiceDate ? this.props.currentInvoiceDate : this.state.input}
-                                placeHolder="Start typing..."
+                                placeholder="Start typing..."
                             /> 
                     <ul className="results">
                         {this.state.input && !this.state.date ? this.state.match.map((res, index) => {
