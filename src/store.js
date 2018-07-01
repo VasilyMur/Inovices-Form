@@ -1,42 +1,46 @@
 import { createStore } from 'redux';
 
+import rootReducer from './reducers/index';
+
 const initialState = {
     selectedInvoices: []
 }
 
-const reducer = ( state = initialState, action ) => {
-    console.log('Reducer: ', action);
+ 
+// const reducer = ( state = initialState, action ) => {
+//     console.log('Reducer: ', action);
 
-    switch (action.type) {
+//     switch (action.type) {
 
-        case 'INVOICE_ADD':
-            const isIncluded = state.selectedInvoices.some(res => {
-                return res.number === action.invoice.number;
-            });
+//         case 'INVOICE_ADD':
+//             const isIncluded = state.selectedInvoices.some(res => {
+//                 return res.number === action.invoice.number;
+//             });
 
-            if (!isIncluded) {
-                return {
-                    selectedInvoices: [...state.selectedInvoices, action.invoice]
-                }
-            } else {
-                return state;
-            }
+//             if (!isIncluded) {
+//                 return {
+//                     selectedInvoices: [...state.selectedInvoices, action.invoice]
+//                 }
+//             } else {
+//                 return state;
+//             }
 
-        case 'INVOICE_DELETE':
-            const newState = [...state.selectedInvoices]
-            const upd = newState.filter(res => {
-                return res.number !== action.number
-            });
+//         case 'INVOICE_DELETE':
+//             const newState = [...state.selectedInvoices]
+//             const upd = newState.filter(res => {
+//                 return res.number !== action.number
+//             });
             
-            return {
-                selectedInvoices: upd
-            }
+//             return {
+//                 selectedInvoices: upd
+//             }
 
-        default:
-            return state;
-    } 
-}
+//         default:
+//             return state;
+//     } 
+// }
 
-const store = createStore(reducer);
+//const store = createStore(reducer);
+const store = createStore(rootReducer, initialState);
 
 export default store;

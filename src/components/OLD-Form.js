@@ -10,6 +10,8 @@ import InputSupplyDate from './InputSupplyDate';
 import InputComment from './InputComment';
 
 
+import { connect } from 'react-redux';
+
 
 class Form extends React.Component {
     numberRef = React.createRef();
@@ -43,7 +45,7 @@ onDoSomeThingClicked = (e) => {
         supply: e.target[2].attributes.value.value,
         comment: e.target[3].innerHTML
     }
- 
+
     if (invoice.number) {
         this.props.submitInvoice(invoice)
         this.removeCurrent();
@@ -53,8 +55,13 @@ onDoSomeThingClicked = (e) => {
     
         this.supDateRef.current.clearInputField();
     }
-    return;  
+   
+    return;
+    
 }
+
+
+
 
     render() {
 
@@ -99,7 +106,23 @@ onDoSomeThingClicked = (e) => {
         )
     }
 }
- 
 
 
-export default Form;
+const mapPropsToState = (state) => {
+    return {
+        selectedInvoices: state.selectedInvoices
+    }
+}
+
+
+const mapDispatchToState = (dispatch) => {
+    return {
+        submitInvoice: (invoice) => {
+            const action = { type: 'INVOICE_ADD', invoice: invoice };
+            dispatch(action);
+
+        }
+    }
+}
+
+export default connect(mapPropsToState, mapDispatchToState)(Form);

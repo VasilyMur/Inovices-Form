@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import App from './App';
-import Form from './Form';
+import AppConnect from './AppConnect';
+import FormConnect from './FormConnect';
 import NotFound from './NotFound';
 
 import store from '../store';
@@ -12,8 +12,8 @@ const Router = () => {
             <Provider store={store}>
                 <BrowserRouter>
                     <Switch>
-                        <Route exact path="/" component={App}/>
-                        <Route path="/form" component={Form}/>
+                        <Route exact path="/" component={AppConnect}/>
+                        <Route path="/form" component={FormConnect}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </BrowserRouter>

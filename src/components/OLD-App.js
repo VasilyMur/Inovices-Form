@@ -4,6 +4,7 @@ import Footer from './Footer';
 import Invoice from './Invoice';
 
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 class App extends React.Component {
@@ -46,6 +47,20 @@ class App extends React.Component {
     );
   }
 }
- 
 
-export default App;
+const mapPropsToState = (state) => {
+  return {
+    selectedInvoices: state.selectedInvoices
+  }
+}
+
+const mapDispatchToState = (dispatch) => {
+  return {
+    deleteInvoice: (number) => {
+      const action = { type: 'INVOICE_DELETE', number: number };
+      dispatch(action);
+    }
+  }
+}
+
+export default connect(mapPropsToState, mapDispatchToState)(App);

@@ -2,9 +2,9 @@ import React from 'react';
 
 class Invoice extends React.Component {
 
-    deleteSelected = () => {
-        this.props.delete(this.props.number)
-    }
+    // deleteSelected = () => {
+    //     this.props.delete(this.props.number)
+    // }
 
     render() {
         return (
@@ -16,7 +16,7 @@ class Invoice extends React.Component {
                         <div className="invoice__single__item"><span className="spanKey">Supply Date:</span> <span className="spanVal">{this.props.supply}</span></div>
                         <div className="invoice__single__item"><span className="spanKey">Comment:</span> <span className="spanVal">{this.props.comment}</span></div>
                     </div>
-                    <button onClick={this.deleteSelected}>Delete Invoice</button>
+                    <button onClick={this.props.delete.bind(null, this.props.index)}>Delete Invoice</button>
                 </div>
             </React.Fragment>
         )
